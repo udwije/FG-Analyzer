@@ -1,34 +1,92 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
+# FG-Analyzer local/runtime files
+# Keep source, tests, deployment scripts, documentation, web assets and Go modules public.
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.secret
+*.secrets
+secrets/
+
+# Runtime configuration (may contain DB/SNMP/auth credentials)
+config.json
+config.local.json
+config.*.local.json
+
+# Certificates and private keys
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+certs/
+private/
+
+# Local databases and runtime data
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+data/
+runtime/
+
+# Logs, reports and exports produced locally
+*.log
+logs/
+reports/
+exports/
+*.csv
+
+# Backups / temporary files
+*.bak
+*.backup
+*.tmp
+*.temp
+*.swp
+*~
+backup/
+backups/
+
+# Build outputs / binaries
 *.exe
-*.exe~
 *.dll
 *.so
 *.dylib
-
-# Test binary, built with `go test -c`
-*.test
-
-# Code coverage profiles and other test artifacts
 *.out
+*.test
+bin/
+build/
+dist/
+release/
+
+# Go tooling / profiling / coverage
+coverage.out
 coverage.html
-coverage.txt
-coverage.xml
 *.coverprofile
-profile.cov
+*.prof
+cpu.prof
+mem.prof
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# IDE / editor metadata
+.vscode/
+.idea/
+*.code-workspace
 
-# Go workspace file
-go.work
-go.work.sum
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# env file
-.env
+# Local archives/package artifacts
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tgz
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# Local scratch directories
+cache/
+tmp/
+temp/
