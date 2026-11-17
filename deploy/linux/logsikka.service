@@ -1,0 +1,38 @@
+[Unit]
+Description=LogSikka (FortiGate syslog -> PostgreSQL/TimescaleDB + web dashboard)
+Wants=network-online.target
+After=network-online.target postgresql.service
+# NPS logs on a Windows share (optional): uncomment when /mnt/nps is set up
+#RequiresMountsFor=/mnt/nps
+
+[Service]
+Type=simple
+User=logsikka
+Group=logsikka
+ExecStart=/opt/logsikka/logsikka --data /var/lib/logsikka
+Restart=always
+RestartSec=5
+# Same time zone as the firewalls and NPS servers: NPS and "date/time" fields are read as local time
+Environment=TZ=Asia/Colombo
+# Give the writer time to flush the last batch to the database or spool
+TimeoutStopSec=30
+KillSignal=SIGTERM
+LimitNOFILE=65536
+# Hardening: the service can only write to its data folder
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+ReadWritePaths=/var/lib/logsikka
+# Needed only if you move syslog to port 514:
+#AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+Alias=fortilog.service

@@ -1,0 +1,12 @@
+# NPS logs from the Windows NPS server(s), read-only over SMB.
+# 1) sudo apt-get install -y cifs-utils
+# 2) Create a domain account with READ access to the NPS log share, e.g. \\NPS01\NPSLogs (C:\Windows\System32\LogFiles)
+# 3) /etc/logsikka-smb.cred  (chmod 600, owner root):
+#      username=svc-logsikka
+#      password=...
+#      domain=CORP
+# 4) Add to /etc/fstab (one line per NPS server), then: sudo mkdir -p /mnt/nps/nps01 && sudo mount -a
+//192.168.2.171/NPSLogs  /mnt/nps/nps01  cifs  ro,credentials=/etc/logsikka-smb.cred,uid=logsikka,gid=logsikka,file_mode=0440,dir_mode=0550,vers=3.0,nofail,x-systemd.automount  0  0
+# 5) In Settings > NPS user mapping, set the folders to /mnt/nps/nps01 (one per line for several servers)
+#    and uncomment RequiresMountsFor=/mnt/nps in /etc/systemd/system/logsikka.service, then daemon-reload.
+# File offsets are stored per path, so the first read after the move starts from "On first start, read back (hours)".

@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sign in · LogSikka</title><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a2540;font:15px/1.45 "IBM Plex Sans","Segoe UI",system-ui,sans-serif;color:#14263a}
+form{background:#fff;border-radius:12px;padding:30px 30px 24px;width:min(380px,92vw);box-shadow:0 20px 50px rgba(0,0,0,.35);display:grid;gap:14px}
+h1{margin:0;font:600 26px "Source Serif 4",Georgia,serif}p{margin:0;color:#5d7083;font-size:13px}
+label{display:grid;gap:5px;color:#5d7083;font-size:13px}input{font:inherit;padding:9px 11px;border:1px solid #c9d5df;border-radius:7px;color:#14263a}
+input:focus{outline:2px solid #0e7490;outline-offset:1px}button{font:inherit;font-weight:600;padding:10px;border:0;border-radius:7px;background:#0e7490;color:#fff;cursor:pointer}
+button:disabled{opacity:.6}#msg{color:#a8321a;min-height:20px;font-size:13px}small{color:#8a9aaa;font-size:12px}
+.lb{display:flex;gap:14px;align-items:center}.lb h1 span{color:#0e7490}.lb img{flex:none;border-radius:12px}
+</style></head><body>
+<form id="f" autocomplete="on"><div class="lb"><img src="/logo.svg" alt="" width="52" height="52"><div><h1>Log<span>Sikka</span></h1><p>Your network's security guard. Sign in to continue.</p></div></div>
+<label>Username<input name="username" autocomplete="username" required autofocus></label>
+<label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+<button id="go">Sign in</button><div id="msg" role="alert"></div>
+<small>Forgotten password? Ask an admin to reset it.</small></form>
+<script>
+const f = document.getElementById('f'), msg = document.getElementById('msg'), go = document.getElementById('go');
+f.onsubmit = async e => {
+  e.preventDefault(); go.disabled = true; msg.textContent = '';
+  try {
+    const r = await fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: f.username.value.trim(), password: f.password.value }) });
+    const t = await r.text(); let j = {}; try { j = JSON.parse(t) } catch { }
+    if (!r.ok) throw new Error(j.error || t || r.statusText);
+    const next = new URLSearchParams(location.search).get('next') || '/';
+    location.href = next.startsWith('/') && !next.startsWith('//') ? next : '/';
+  } catch (x) { msg.textContent = x.message; f.password.select() } finally { go.disabled = false }
+};
+</script></body></html>

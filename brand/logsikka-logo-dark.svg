@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 300" role="img" aria-label="LogSikka">
+  <rect width="1240" height="300" rx="28" fill="#0B2545"/>
+  <g transform="translate(22,22) scale(0.5)">
+  <rect width="512" height="512" rx="112" fill="#0B2545"/>
+  <path d="M256 150 L150 52 L362 52 Z" fill="#2DD4BF" opacity=".35"/>
+  <path d="M136 196 h40 v-30 h36 v30 h28 v-44 h32 v44 h28 v-30 h36 v30 h40 v24 H136 Z" fill="#E8F1F2"/>
+  <rect x="136" y="236" width="240" height="26" rx="6" fill="#E8F1F2"/>
+  <rect x="136" y="276" width="176" height="26" rx="6" fill="#E8F1F2"/>
+  <rect x="326" y="276" width="50" height="26" rx="6" fill="#2DD4BF"/>
+  <rect x="136" y="316" width="240" height="26" rx="6" fill="#E8F1F2"/>
+  <rect x="136" y="356" width="96" height="26" rx="6" fill="#E8F1F2"/>
+  <rect x="246" y="356" width="130" height="26" rx="6" fill="#E8F1F2"/>
+  <path d="M226 418 v-22 a30 30 0 0 1 60 0 v22 Z" fill="#0B2545"/>
+  <rect x="136" y="396" width="90" height="22" rx="6" fill="#E8F1F2"/>
+  <rect x="286" y="396" width="90" height="22" rx="6" fill="#E8F1F2"/>
+  <circle cx="256" cy="150" r="16" fill="#2DD4BF"/>
+  </g>
+  <text x="330" y="178" font-family="Inter, 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="128" font-weight="700" fill="#FFFFFF" letter-spacing="-2">Log<tspan fill="#2DD4BF">Sikka</tspan></text>
+  <text x="334" y="236" font-family="Inter, 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="32" fill="#9FB3C8" letter-spacing="3">YOUR NETWORK'S SECURITY GUARD</text>
+</svg>
