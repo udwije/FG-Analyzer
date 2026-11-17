@@ -439,7 +439,7 @@ Issues and pull requests are welcome. For material changes:
 
 ## License
 
-No license file was identified in the supplied source package. Until a license is added, standard copyright restrictions apply. If public reuse or contribution is intended, add a suitable license such as MIT, Apache-2.0, or GPL-3.0 after reviewing the implications.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
