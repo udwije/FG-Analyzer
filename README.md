@@ -37,7 +37,7 @@ Install Go 1.22 or newer, then run:
 
     config log syslogd setting
         set status enable
-        set server "WINDOWS_SERVER_IP"
+        set server "SERVER_IP"
         set mode reliable
         set port 6514
         set format default
