@@ -1,4 +1,4 @@
-# LogSikka (formerly FortiLog)
+#  FG-Analyzer (formerly LogSikka)
 
 Self-hosted network and security log tool for FortiGate-based organisations: FortiGate syslog into
 PostgreSQL / TimescaleDB, dashboards, AI usage, people and devices, sites and zones, alerts, WAN links over SNMPv3,
